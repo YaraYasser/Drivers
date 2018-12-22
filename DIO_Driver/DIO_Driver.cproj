@@ -15,7 +15,8 @@
     <AssemblyName>DIO_Driver</AssemblyName>
     <Name>DIO_Driver</Name>
     <RootNamespace>DIO_Driver</RootNamespace>
-    <ToolchainFlavour>Native</ToolchainFlavour>
+    <ToolchainFlavour>
+    </ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
@@ -40,6 +41,7 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <AsfVersion>3.5.0</AsfVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -141,6 +143,12 @@
     <Compile Include="functions.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="KeyPadDriver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="KeyPadDriver.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LED.c">
       <SubType>compile</SubType>
     </Compile>
@@ -148,6 +156,21 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Main.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Port.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SevenSegment.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SevenSegment.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="std_macros.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

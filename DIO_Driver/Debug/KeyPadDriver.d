@@ -1,4 +1,5 @@
-LED.d LED.o: .././LED.c \
+KeyPadDriver.d KeyPadDriver.o: .././KeyPadDriver.c .././KeyPadDriver.h \
+ .././DIO.h .././Main.h .././Port.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -10,7 +11,15 @@ LED.d LED.o: .././LED.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- .././DIO.h .././Main.h .././Port.h .././std_macros.h .././LED.h
+ .././std_macros.h
+
+.././KeyPadDriver.h:
+
+.././DIO.h:
+
+.././Main.h:
+
+.././Port.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -34,12 +43,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-.././DIO.h:
-
-.././Main.h:
-
-.././Port.h:
-
 .././std_macros.h:
-
-.././LED.h:

@@ -2,87 +2,188 @@
  * DIO.c
  *
  * Created: 12/7/2018 11:10:41 AM
- *  Author: user
+ *  Author: uSET
  */ 
 
 #include <avr/io.h>
 #include "DIO.h"
+#include "Main.h"
+#include "Port.h"
+#include "std_macros.h"
 void DIO_vSetPinDirection(uint8 PortName,uint8 Direction,uint8 PinNum){
 	switch (PortName)
 	{
 		case 'A':
 			if(1 == Direction){
-				DDRA |= (1<<PinNum);
+				SET_BIT(DDRA,PinNum);
 			}
 			else{
-				DDRA &= ~(1<<PinNum);
+				CLR_BIT(DDRA,PinNum);
 			}
 			break;
 		case 'B':
 		if(1 == Direction){
-			DDRB |= (1<<PinNum);
+			SET_BIT(DDRB,PinNum);
+			
 		}
 		else{
-			DDRB &= ~(1<<PinNum);
+			CLR_BIT(DDRB,PinNum);
+			
 		}
 		break;
 		
 		case 'C':
 		if(1 == Direction){
-			DDRC |= (1<<PinNum);
+			SET_BIT(DDRC,PinNum);
+			
 		}
 		else{
-			DDRC &= ~(1<<PinNum);
+			CLR_BIT(DDRC,PinNum);
+			
 		}
 		break;
 		
 		case 'D':
 		if(1 == Direction){
-			DDRD |= (1<<PinNum);
+			SET_BIT(DDRD,PinNum);
+			
 		}
 		else{
-			DDRD &= ~(1<<PinNum);
+			CLR_BIT(DDRD,PinNum);
+			
 		}
 		break;
 		
 	}
 }
-
+void DIO_vSetHighNibbleDirection(uint8 PortName,uint8 highNibble){
+		switch (PortName)
+		{
+			case 'A':
+			if(1 == highNibble){
+				DDRA |= 0b11110000;
+			}
+			else{
+				DDRA |= 0b00000000;
+			}
+			break;
+			case 'B':
+			if(1 == highNibble){
+				DDRB |= 0b11110000;
+			}
+			else{
+				DDRB |= 0b00000000;
+			}
+			break;
+			case 'C':
+			if(1 == highNibble){
+				DDRC |= 0b11110000;
+			}
+			else{
+				DDRC |= 0b00000000;
+			}
+			break;
+			case 'D':
+			if(1 == highNibble){
+				DDRD|= 0b11110000;
+			}
+			else{
+				DDRD |= 0b00000000;
+			}
+			break;
+		}			
+		
+		
+	
+}
+void DIO_vSetLowNibbleDirection(uint8 PortName,uint8 lowNibble){
+	switch (PortName)
+	{
+		case 'A':
+			if (1 == lowNibble)
+			{
+				DDRA |= 0b00001111;
+			}
+			else
+			{
+				DDRA |= 0b00000000;
+			}
+		break;
+		case 'B':
+			if (1 == lowNibble)
+			{
+				DDRB |= 0b00001111;
+			}
+			else
+			{
+				DDRB |= 0b00000000;
+			}
+		break;
+		case 'C':
+			if (1 == lowNibble)
+			{
+				DDRC |= 0b00001111;
+			}
+			else
+			{
+				DDRC |= 0b00000000;
+			}
+		break;
+		case 'D':
+			if (1 == lowNibble)
+			{
+				DDRD |= 0b00001111;
+			}
+			else
+			{
+				DDRD |= 0b00000000;
+			}
+		break;
+	}	
+	
+}
 void DIO_vWrite(uint8 PortName,uint8 voltType,uint8 PinNum){
 	
 	switch (PortName)
 	{
 		case 'A':
 		if(1 == voltType){
-			PORTA |= (1<<PinNum);
+			SET_BIT(PORTA,PinNum);
+			
 		}
 		
 		else{
-			PORTA &= ~(1<<PinNum);
+			CLR_BIT(PORTA,PinNum);
+			
 		}
 			break;
 		case 'B':
 			if(1 == voltType){
-			PORTB |= (1<<PinNum);
+			SET_BIT(PORTB,PinNum);
+			
 			}
 			else{
-				PORTB &= ~(1<<PinNum);
+			CLR_BIT(PORTB,PinNum);
 			}
 			break;
 		case 'C':
 			if(1 == voltType){
-				PORTC |= (1<<PinNum);
+				SET_BIT(PORTC,PinNum);
+				
 			}
 			else{
-				PORTC &= ~(1<<PinNum);
+				CLR_BIT(PORTC,PinNum);
+				
 			}
 			break;
 		case 'D':
 			if(1 == voltType){
-				PORTD |= (1<<PinNum);
+				SET_BIT(PORTD,PinNum);
+				
 			}
 			else{
-				PORTD &= ~(1<<PinNum);
+				CLR_BIT(PORTD,PinNum);
+				
 			}
 			break;
 	}
@@ -92,19 +193,39 @@ uint8 DIO_uint8Read(uint8 PortName,uint8 PinNum){
 	switch (PortName)
 	{
 		case 'A':
-			return (PINA & (1<<PinNum))>>PinNum;
+			return READ_BIT(PINA,PinNum);
 			break;
 		case 'B':
-			return (PINB & (1<<PinNum))>>PinNum;
+			return READ_BIT(PINB,PinNum);
 			break;
 		case 'C':
-			return (PINC & (1<<PinNum))>>PinNum;
+			return READ_BIT(PINC,PinNum);
 			break;
 		case 'D':
-			return (PIND & (1<<PinNum))>>PinNum;
+			return READ_BIT(PIND,PinNum);
 			break;
 			
 	}
 	return 0;
 }
+
+void DIO_vSetPort(uint8 PortName){
+	switch (PortName)
+	{
+		case 'A':
+		 PORTA = 0xff;
+		break;
+		case 'B':
+		PORTB = 0xff;
+		break;
+		case 'C':
+		PORTC = 0xff;
+		break;
+		case 'D':
+		PORTD = 0xff;
+		break;
+		
+	}
+}
+
 
